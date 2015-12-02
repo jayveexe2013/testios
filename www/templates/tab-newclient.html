@@ -1,0 +1,76 @@
+<ion-view view-title="Add New" >
+  <ion-content class="padding">
+    <form name="myForm" novalidate ng-controller="ClientSaveCtrl">
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">First Name</span>
+                <input type="text" name="firstname" ng-model="firstname"  ng-change="updateStorage()" value="{{ firstname }}" required> 
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Last Name</span>
+                <input type="text" name="lastname" ng-model="lastname"  required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Middle Name</span>
+                <input type="text" name="middlename" ng-model="middlename" >
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Birthdate</span>
+              <input type="date" name="birthdate" min="1970-10-01" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Address</span>
+                <input type="text" name="address" ng-model="address" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">City</span>
+                <input type="text" name="city" ng-model="city" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Telephone Number </span>
+                <input type="text" name="telno" ng-model="telno" required>
+            </label>
+        </div>
+        <div class="padding">
+            <p ng-show="myForm.firstname.$error.required">* First Name is required</p>
+            <p ng-show="myForm.lastname.$error.required">* Last Name is required</p>
+            <p ng-show="myForm.birthdate.$error.required">* Birthdate is required</p>
+            <p ng-show="myForm.birthdate.$error.required">* Birthdate not Valid</p>
+            <p ng-show="myForm.address.$error.required">* Address is required</p>
+            <p ng-show="myForm.city.$error.required">* City is required</p>
+            <p ng-show="myForm.telno.$error.required">* Telephone Number is required</p>
+        </div>
+        <div class="padding">
+            <button type="button" class="button button-block button-positive" ng-disabled="myForm.$invalid" ng-click="saveData()">Submit</button>
+        </div>
+    </form>
+  </ion-content>
+  <!--
+    <div class="list card">
+      <div class="item item-divider">Recent Updates</div>
+      <div class="item item-body">
+        <div>
+          There is a fire in <b>sector 3</b>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Health</div>
+      <div class="item item-body">
+        <div>
+          You ate an apple today!
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  -->
+</ion-view>
