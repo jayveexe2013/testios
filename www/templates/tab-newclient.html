@@ -1,22 +1,22 @@
 <ion-view view-title="Add New" >
   <ion-content class="padding">
-    <form name="myForm" novalidate ng-controller="ClientSaveCtrl">
+    <form name="myForm" novalidate ng-controller="ClientSaveCtrl" data-ng-init="load()">
         <div class="list">
             <label class="item item-input">
                 <span class="input-label">First Name</span>
-                <input type="text" name="firstname" ng-model="firstname"  ng-change="updateStorage()" value="{{ firstname }}" required> 
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Last Name</span>
-                <input type="text" name="lastname" ng-model="lastname"  required>
+                <input type="text" name="firstname" ng-model="firstname" required> 
             </label>
             <label class="item item-input">
                 <span class="input-label">Middle Name</span>
                 <input type="text" name="middlename" ng-model="middlename" >
             </label>
             <label class="item item-input">
+                <span class="input-label">Last Name</span>
+                <input type="text" name="lastname" ng-model="lastname"  required>
+            </label>
+            <label class="item item-input">
               <span class="input-label">Birthdate</span>
-              <input type="date" name="birthdate" min="1970-10-01" required>
+              <input type="date" name="birthdate" ng-model="birthdate" required>
             </label>
             <label class="item item-input">
                 <span class="input-label">Address</span>
@@ -41,7 +41,7 @@
             <p ng-show="myForm.telno.$error.required">* Telephone Number is required</p>
         </div>
         <div class="padding">
-            <button type="button" class="button button-block button-positive" ng-disabled="myForm.$invalid" ng-click="saveData()">Submit</button>
+            <button type="button" class="button button-block button-positive" ng-disabled="myForm.$invalid" ng-click="save()">Submit</button>
         </div>
     </form>
   </ion-content>

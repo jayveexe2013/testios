@@ -49,21 +49,33 @@ clientmanagement.controller('ClientInfo',function($scope) {
 
 });
 
-clientmanagement.controller('ClientSaveCtrl', ['$scope' ,'$window', function($scope,$http, $window) {
-   $scope.saveData = function() {
-    localStorage.setItem('firstname', JSON.stringify($scope.firstname)); 
-    localStorage.setItem('lastname', JSON.stringify($scope.lastname));
-    localStorage.setItem('middlename', JSON.stringify($scope.middlename));
-    localStorage.setItem('birthday', JSON.stringify($scope.birthday));
-    localStorage.setItem('address', JSON.stringify($scope.address));
-    localStorage.setItem('city', JSON.stringify($scope.city));
-    localStorage.setItem('telno', JSON.stringify($scope.telno)); 
 
+
+clientmanagement.controller('ClientSaveCtrl', function($scope, $localStorage, $ionicPopup) {
+  $scope.save = function() {
+
+      $localStorage.firstname = $scope.firstname;
+      $localStorage.lastname = $scope.lastname;
+      $localStorage.middlename = $scope.middlename;
+      $localStorage.birthdate = $scope.birthdate;
+      $localStorage.address = $scope.address;
+      $localStorage.city = $scope.city;
+      $localStorage.telno = $scope.telno;
+
+            $ionicPopup.alert({
+              title: 'Success',
+              content: 'Data Saved'
+            });
   }
-   
-}]);
 
-clientmanagement.controller('clientInfo', ['$scope' ,'$window', function($scope,$http, $window) {
+  $scope.load = function() {
+      $scope.firstname = $localStorage.firstname;
+      $scope.lastname = $localStorage.lastname;
+      $scope.middlename = $localStorage.middlename;
+      $scope.birthdate = new Date($localStorage.birthdate);
+      $scope.address = $localStorage.address;
+      $scope.city = $localStorage.city;
+      $scope.telno = $localStorage.telno;
+  }
 
-
-}]);
+});
